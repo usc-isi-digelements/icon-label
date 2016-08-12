@@ -1,0 +1,116 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-icon/iron-icon.html">
+<link rel="import" href="../iron-icons/iron-icons.html">
+
+<!--
+A polymer web component that shows an iron-icon and stylized text that is also optionally a link.
+
+Example:
+
+        <icon-label
+          icon="icons:polymer"
+          icon-style-class="style-class"
+          link="http://link"
+          text="Click Me">
+        </icon-label>
+
+Custom mixins:
+
+        --icon-label-link-hover
+        --icon-label-text
+
+@demo demo/index.html
+-->
+
+<dom-module id="icon-label">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+
+      iron-icon {
+        --iron-icon-height: 18px;
+        --iron-icon-width: 18px;
+        /* Icons next to text look better with vertical-align text-bottom. */
+        vertical-align: text-bottom;
+      }
+
+      a {
+        color: initial;
+        text-decoration: none;
+      }
+
+      a > strong {
+        text-decoration: underline;
+        @apply(--icon-label-text);
+      }
+
+      a:hover > strong {
+        @apply(--icon-label-link-hover);
+      }
+
+      span > strong {
+        @apply(--icon-label-text);
+      }
+    </style>
+
+    <template is="dom-if" if="[[link]]">
+      <a href$="[[link]]">
+        <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+        <strong>[[text]]</strong>
+      </a>
+    </template>
+
+    <template is="dom-if" if="[[!link]]">
+      <span title="[[text]]">
+        <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+        <strong>[[text]]</strong>
+      </span>
+    </template>
+  </template>
+
+  <script>
+  (function() {
+    'use strict';
+
+    Polymer({
+      is: 'icon-label',
+
+      properties: {
+        /**
+         * The icon for the icon-label.
+         */
+        icon: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * The style class for the icon in the icon-label.
+         */
+        iconStyleClass: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional) The link for the icon-label.
+         */
+        link: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * The text for the icon-label.
+         */
+        text: {
+          type: String,
+          value: ''
+        }
+      }
+    });
+  })();
+  </script>
+</dom-module>

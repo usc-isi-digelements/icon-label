@@ -1,0 +1,27 @@
+{
+  "name": "icon-label",
+  "version": "1.0.0",
+  "authors": [
+    "Next Century Corporation"
+  ],
+  "description": "",
+  "keywords": [
+    "web-component",
+    "polymer"
+  ],
+  "main": "icon-label.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "https://github.com/DigElements/icon-label/",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.2.0",
+    "iron-elements": "PolymerElements/iron-elements#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
+    "web-component-tester": "^4.0.0"
+  }
+}
