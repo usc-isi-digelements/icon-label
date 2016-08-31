@@ -8,6 +8,7 @@ Example:
           icon="icons:polymer"
           icon-style-class="style-class"
           link="http://link"
+          target="_blank"
           text="Click Me">
         </icon-label>
 ```

@@ -31,6 +31,7 @@
         expect(component.icon).to.equal('icons:polymer');
         expect(component.iconStyleClass).to.equal('');
         expect(component.link).to.equal('');
+        expect(component.target).to.equal('_self');
         expect(component.text).to.equal('myText');
       });
 
@@ -59,6 +60,7 @@
         component.icon = 'icons:polymer';
         component.iconStyleClass = 'myStyleClass';
         component.link = 'myLink';
+        component.target = '_blank';
         component.text = 'myText';
         flush(function() {
           done();
@@ -69,6 +71,7 @@
         expect(component.icon).to.equal('icons:polymer');
         expect(component.iconStyleClass).to.equal('myStyleClass');
         expect(component.link).to.equal('myLink');
+        expect(component.target).to.equal('_blank');
         expect(component.text).to.equal('myText');
       });
 
