@@ -41,14 +41,19 @@
 
       test('does contain a span element', function() {
         expect(component.$$('span')).to.exist;
+        expect(component.$$('span').title).to.equal(component.text);
       });
 
       test('does contain an iron-icon element', function() {
         expect(component.$$('iron-icon')).to.exist;
+        expect(component.$$('iron-icon').icon).to.equal(component.icon);
+        expect(component.$$('iron-icon').getAttribute('item-icon')).to.exist;
+        expect(component.$$('iron-icon').className.includes(component.iconStyleClass)).to.be.true;
       });
 
       test('does contain a strong element', function() {
         expect(component.$$('strong')).to.exist;
+        expect(component.$$('strong').innerText).to.equal(component.text);
       });
     });
 
@@ -81,14 +86,20 @@
 
       test('does contain an anchor element', function() {
         expect(component.$$('a')).to.exist;
+        expect(component.$$('a').getAttribute('href')).to.equal(component.link);
+        expect(component.$$('a').getAttribute('target')).to.equal(component.target);
       });
 
       test('does contain an iron-icon element', function() {
         expect(component.$$('iron-icon')).to.exist;
+        expect(component.$$('iron-icon').icon).to.equal(component.icon);
+        expect(component.$$('iron-icon').getAttribute('item-icon')).to.exist;
+        expect(component.$$('iron-icon').className.includes(component.iconStyleClass)).to.be.true;
       });
 
       test('does contain a strong element', function() {
         expect(component.$$('strong')).to.exist;
+        expect(component.$$('strong').innerText).to.equal(component.text);
       });
     });
   </script>
