@@ -16,90 +16,90 @@
 
   <script>
     suite('icon-label tests without link', function() {
-      var component;
+      var element;
 
       setup(function(done) {
-        component = fixture('icon-label-fixture');
-        component.icon = 'icons:polymer';
-        component.text = 'myText';
+        element = fixture('icon-label-fixture');
+        element.icon = 'icons:polymer';
+        element.text = 'myText';
         flush(function() {
           done();
         });
       });
 
       test('properties are set to correct values', function() {
-        expect(component.icon).to.equal('icons:polymer');
-        expect(component.iconStyleClass).to.equal('');
-        expect(component.link).to.equal('');
-        expect(component.target).to.equal('_self');
-        expect(component.text).to.equal('myText');
+        expect(element.icon).to.equal('icons:polymer');
+        expect(element.iconStyleClass).to.equal('');
+        expect(element.link).to.equal('');
+        expect(element.target).to.equal('_self');
+        expect(element.text).to.equal('myText');
       });
 
       test('does not contain an anchor element', function() {
-        expect(component.$$('a')).to.not.exist;
+        expect(element.$$('a')).to.not.exist;
       });
 
       test('does contain a span element', function() {
-        expect(component.$$('span')).to.exist;
-        expect(component.$$('span').title).to.equal(component.text);
+        expect(element.$$('span')).to.exist;
+        expect(element.$$('span').title).to.equal(element.text);
       });
 
       test('does contain an iron-icon element', function() {
-        expect(component.$$('iron-icon')).to.exist;
-        expect(component.$$('iron-icon').icon).to.equal(component.icon);
-        expect(component.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(component.$$('iron-icon').className.includes(component.iconStyleClass)).to.be.true;
+        expect(element.$$('iron-icon')).to.exist;
+        expect(element.$$('iron-icon').icon).to.equal(element.icon);
+        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
+        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
       });
 
       test('does contain a strong element', function() {
-        expect(component.$$('strong')).to.exist;
-        expect(component.$$('strong').innerText).to.equal(component.text);
+        expect(element.$$('strong')).to.exist;
+        expect(element.$$('strong').innerText).to.equal(element.text);
       });
     });
 
     suite('icon-label tests with link', function() {
-      var component;
+      var element;
 
       setup(function(done) {
-        component = fixture('icon-label-fixture');
-        component.icon = 'icons:polymer';
-        component.iconStyleClass = 'myStyleClass';
-        component.link = 'myLink';
-        component.target = '_blank';
-        component.text = 'myText';
+        element = fixture('icon-label-fixture');
+        element.icon = 'icons:polymer';
+        element.iconStyleClass = 'myStyleClass';
+        element.link = 'myLink';
+        element.target = '_blank';
+        element.text = 'myText';
         flush(function() {
           done();
         });
       });
 
       test('properties are set to correct values', function() {
-        expect(component.icon).to.equal('icons:polymer');
-        expect(component.iconStyleClass).to.equal('myStyleClass');
-        expect(component.link).to.equal('myLink');
-        expect(component.target).to.equal('_blank');
-        expect(component.text).to.equal('myText');
+        expect(element.icon).to.equal('icons:polymer');
+        expect(element.iconStyleClass).to.equal('myStyleClass');
+        expect(element.link).to.equal('myLink');
+        expect(element.target).to.equal('_blank');
+        expect(element.text).to.equal('myText');
       });
 
       test('does not contain a span element', function() {
-        expect(component.$$('span')).to.not.exist;
+        expect(element.$$('span')).to.not.exist;
       });
 
       test('does contain an anchor element', function() {
-        expect(component.$$('a')).to.exist;
-        expect(component.$$('a').getAttribute('href')).to.equal(component.link);
-        expect(component.$$('a').getAttribute('target')).to.equal(component.target);
+        expect(element.$$('a')).to.exist;
+        expect(element.$$('a').getAttribute('href')).to.equal(element.link);
+        expect(element.$$('a').getAttribute('target')).to.equal(element.target);
       });
 
       test('does contain an iron-icon element', function() {
-        expect(component.$$('iron-icon')).to.exist;
-        expect(component.$$('iron-icon').icon).to.equal(component.icon);
-        expect(component.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(component.$$('iron-icon').className.includes(component.iconStyleClass)).to.be.true;
+        expect(element.$$('iron-icon')).to.exist;
+        expect(element.$$('iron-icon').icon).to.equal(element.icon);
+        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
+        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
       });
 
       test('does contain a strong element', function() {
-        expect(component.$$('strong')).to.exist;
-        expect(component.$$('strong').innerText).to.equal(component.text);
+        expect(element.$$('strong')).to.exist;
+        expect(element.$$('strong').innerText).to.equal(element.text);
       });
     });
   </script>

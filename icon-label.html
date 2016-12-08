@@ -3,22 +3,26 @@
 <link rel="import" href="../iron-icons/iron-icons.html">
 
 <!--
-A polymer web component that shows an iron-icon and stylized text that is also optionally a link.
+A Polymer Element showing an iron-icon and stylized text that is also optionally a link.
 
-Example:
+### Example
 
-        <icon-label
-          icon="icons:polymer"
-          icon-style-class="style-class"
-          link="http://link"
-          target="_blank"
-          text="Click Me">
-        </icon-label>
+    <icon-label
+        icon="icons:polymer"
+        icon-style-class="style-class"
+        link="http://link"
+        target="_blank"
+        text="Click Me">
+    </icon-label>
 
-Custom mixins:
+### Styling
 
-        --icon-label-link-hover
-        --icon-label-text
+`<icon-label>` provides the following custom properties and mixins for styling:
+
+Custom property           | Description                                 | Default
+--------------------------|---------------------------------------------|----------------------
+`--icon-label-link-hover` | Style used when hovering over the link      | none
+`--icon-label-text`       | Style used with both link and non-link text | none
 
 @demo demo/index.html
 -->
@@ -81,6 +85,9 @@ Custom mixins:
       properties: {
         /**
          * The icon for the icon-label.
+         *
+         * @type {String}
+         * @default ''
          */
         icon: {
           type: String,
@@ -89,6 +96,9 @@ Custom mixins:
 
         /**
          * The style class for the icon in the icon-label.
+         *
+         * @type {String}
+         * @default ''
          */
         iconStyleClass: {
           type: String,
@@ -97,6 +107,9 @@ Custom mixins:
 
         /**
          * (Optional) The link for the icon-label.
+         *
+         * @type {String}
+         * @default ''
          */
         link: {
           type: String,
@@ -105,6 +118,9 @@ Custom mixins:
 
         /**
          * (Optional) The target page of the link.
+         *
+         * @type {String}
+         * @default '_self'
          */
         target: {
           type: String,
@@ -113,6 +129,9 @@ Custom mixins:
 
         /**
          * The text for the icon-label.
+         *
+         * @type {String}
+         * @default ''
          */
         text: {
           type: String,
