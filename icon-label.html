@@ -6,14 +6,15 @@
 A Polymer Element showing an iron-icon and stylized text that is also optionally a link.
 
 ### Example
-
-    <icon-label
-        icon="icons:polymer"
-        icon-style-class="style-class"
-        link="http://link"
-        target="_blank"
-        text="Click Me">
-    </icon-label>
+```html
+<icon-label
+  icon="icons:polymer"
+  icon-style-class="style-class"
+  link="http://link"
+  target="_blank"
+  text="Click Me">
+</icon-label>
+```
 
 ### Styling
 
@@ -84,6 +85,8 @@ Custom property           | Description                                 | Defaul
 
       properties: {
         /**
+         * (Required)
+         *
          * The icon for the icon-label.
          *
          * @type {String}
@@ -95,6 +98,8 @@ Custom property           | Description                                 | Defaul
         },
 
         /**
+         * (Optional)
+         *
          * The style class for the icon in the icon-label.
          *
          * @type {String}
@@ -106,7 +111,9 @@ Custom property           | Description                                 | Defaul
         },
 
         /**
-         * (Optional) The link for the icon-label.
+         * (Optional)
+         *
+         * The link for the icon-label.
          *
          * @type {String}
          * @default ''
@@ -117,7 +124,9 @@ Custom property           | Description                                 | Defaul
         },
 
         /**
-         * (Optional) The target page of the link.
+         * (Optional)
+         *
+         * The target page of the link.
          *
          * @type {String}
          * @default '_self'
@@ -128,6 +137,8 @@ Custom property           | Description                                 | Defaul
         },
 
         /**
+         * (Required)
+         *
          * The text for the icon-label.
          *
          * @type {String}
