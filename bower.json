@@ -1,10 +1,9 @@
 {
   "name": "icon-label",
-  "version": "1.0.2",
-  "authors": [
-    "Next Century Corporation"
-  ],
   "description": "A Polymer Element showing an iron-icon and stylized text that is also optionally a link.",
+  "version": "1.0.2",
+  "authors": ["Next Century Corporation"],
+  "license": "Apache-2.0",
   "keywords": [
     "web-component",
     "polymer"
