@@ -15,6 +15,7 @@ limitations under the License.
 -->
 
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../iron-flex-layout/iron-flex-layout-classes.html">
 <link rel="import" href="../iron-icon/iron-icon.html">
 <link rel="import" href="../iron-icons/iron-icons.html">
 
@@ -46,16 +47,17 @@ Custom property           | Description                                 | Defaul
 
 <dom-module id="icon-label">
   <template>
+    <style include="iron-flex iron-flex-alignment iron-flex-factors"></style>
+
     <style>
       :host {
         display: block;
       }
 
       iron-icon {
+        margin-right: 5px;
         --iron-icon-height: 18px;
         --iron-icon-width: 18px;
-        /* Icons next to text look better with vertical-align text-bottom. */
-        vertical-align: text-bottom;
       }
 
       a {
@@ -78,14 +80,14 @@ Custom property           | Description                                 | Defaul
     </style>
 
     <template is="dom-if" if="[[link]]">
-      <a href$="[[link]]" target$="[[target]]">
+      <a class="layout horizontal center" href$="[[link]]" target$="[[target]]">
         <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
         <strong>[[text]]</strong>
       </a>
     </template>
 
     <template is="dom-if" if="[[!link]]">
-      <span title="[[text]]">
+      <span class="layout horizontal center" title="[[text]]">
         <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
         <strong>[[text]]</strong>
       </span>
