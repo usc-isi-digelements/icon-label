@@ -58,6 +58,20 @@ Custom property           | Description                                 | Defaul
         margin-right: 5px;
         --iron-icon-height: 20px;
         --iron-icon-width: 20px;
+        /* Need to fix overflow issues. */
+        min-width: 20px;
+      }
+
+      strong {
+        line-height: 20px;
+        /* Needed to fix flexbox layout issues in newer browsers. */
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: normal;
+        word-break: break-word;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
       }
 
       a {
@@ -66,7 +80,6 @@ Custom property           | Description                                 | Defaul
       }
 
       a > strong {
-        line-height: 20px;
         text-decoration: underline;
         @apply(--icon-label-text);
       }
@@ -76,7 +89,6 @@ Custom property           | Description                                 | Defaul
       }
 
       span > strong {
-        line-height: 20px;
         @apply(--icon-label-text);
       }
     </style>
