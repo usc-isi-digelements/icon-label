@@ -18,33 +18,35 @@ limitations under the License.
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <script src="../../webcomponentsjs/webcomponents-lite.min.js"></script>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <link rel="import" href="../icon-label.html">
 </head>
 
 <body unresolved>
-  <template is="dom-bind" id="demo">
-    <p>Icon: icons:polymer</p>
-    <p>Text: See Me</p>
+  <dom-bind id="demo">
+    <template is="dom-bind">
+      <p>Icon: account-circle</p>
+      <p>Text: See Me</p>
 
-    <icon-label
-      icon="icons:polymer"
-      text="See Me">
-    </icon-label>
+      <icon-label
+        icon="account-circle"
+        text="See Me">
+      </icon-label>
 
-    <p>Icon: icons:open-in-new</p>
-    <p>Icon Style Class: custom</p>
-    <p>Link: http://nextcentury.com</p>
-    <p>Target: _blank</p>
-    <p>Text: Click Me</p>
+      <p>Icon: open-in-new</p>
+      <p>Icon Style Class: custom</p>
+      <p>Link: http://nextcentury.com</p>
+      <p>Target: _blank</p>
+      <p>Text: Click Me</p>
 
-    <icon-label
-      icon="icons:open-in-new"
-      icon-style-class="custom"
-      link="https://nextcentury.com"
-      target="_blank"
-      text="Click Me">
-    </icon-label>
-  </template>
+      <icon-label
+        icon="open-in-new"
+        icon-style-class="custom"
+        link="https://nextcentury.com"
+        target="_blank"
+        text="Click Me">
+      </icon-label>
+    </template>
+  </dom-bind>
 </body>
 </html>
