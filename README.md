@@ -17,10 +17,11 @@ A Polymer Element showing an iron-icon and stylized text that is also optionally
 
 `<icon-label>` provides the following custom properties and mixins for styling:
 
-Custom property           | Description                                 | Default
---------------------------|---------------------------------------------|----------------------
-`--icon-label-link-hover` | Style used when hovering over the link      | none
-`--icon-label-text`       | Style used with both link and non-link text | none
+Custom property                      | Description                                 | Default
+-------------------------------------|---------------------------------------------|--------
+`--icon-label-link-hover`            | Style used when hovering over the link      | none
+`--icon-label-text`                  | Style used with both link and non-link text | none
+`--icon-label-text-background-color` | Background color of the link/non-link text  | none
 
 ### Dependencies
 

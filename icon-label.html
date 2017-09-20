@@ -38,10 +38,11 @@ A Polymer Element showing an iron-icon and stylized text that is also optionally
 
 `<icon-label>` provides the following custom properties and mixins for styling:
 
-Custom property           | Description                                 | Default
---------------------------|---------------------------------------------|----------------------
-`--icon-label-link-hover` | Style used when hovering over the link      | none
-`--icon-label-text`       | Style used with both link and non-link text | none
+Custom property                      | Description                                 | Default
+-------------------------------------|---------------------------------------------|--------
+`--icon-label-link-hover`            | Style used when hovering over the link      | none
+`--icon-label-text`                  | Style used with both link and non-link text | none
+`--icon-label-text-background-color` | Background color of the link/non-link text  | none
 
 @demo demo/index.html
 -->
@@ -55,16 +56,17 @@ Custom property           | Description                                 | Defaul
         display: block;
       }
 
-      iron-icon {
-        margin-right: 5px;
-        --iron-icon-height: 20px;
-        --iron-icon-width: 20px;
-        /* Need to fix overflow issues. */
-        min-width: 20px;
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      strong {
+      a > span, span > span {
+        background-color: var(--icon-label-text-background-color);
+        border-radius: 5px;
+        font-weight: 500;
         line-height: 20px;
+        padding: 0 5px;
         /* Needed to fix flexbox layout issues in newer browsers. */
         display: -webkit-box;
         overflow: hidden;
@@ -73,24 +75,23 @@ Custom property           | Description                                 | Defaul
         word-break: break-word;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
-      }
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
-
-      a > strong {
-        text-decoration: underline;
         @apply --icon-label-text;
       }
 
-      a:hover > strong {
+      a > span {
+        text-decoration: underline;
+      }
+
+      a:hover > span {
         @apply --icon-label-link-hover;
       }
 
-      span > strong {
-        @apply --icon-label-text;
+      iron-icon {
+        margin-right: 5px;
+        --iron-icon-height: 20px;
+        --iron-icon-width: 20px;
+        /* Need to fix overflow issues. */
+        min-width: 20px;
       }
 
       iron-icon.amber {
@@ -181,14 +182,14 @@ Custom property           | Description                                 | Defaul
     <template is="dom-if" if="[[link]]">
       <a class="layout horizontal center" href$="[[link]]" target$="[[target]]">
         <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-        <strong>[[text]]</strong>
+        <span>[[text]]</span>
       </a>
     </template>
 
     <template is="dom-if" if="[[!link]]">
       <span class="layout horizontal center" title="[[text]]">
         <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-        <strong>[[text]]</strong>
+        <span>[[text]]</span>
       </span>
     </template>
   </template>

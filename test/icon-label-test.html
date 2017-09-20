@@ -60,16 +60,16 @@ limitations under the License.
         expect(element.$$('span').title).to.equal(element.text);
       });
 
-      test('does contain an iron-icon element', function() {
-        expect(element.$$('iron-icon')).to.exist;
-        expect(element.$$('iron-icon').icon).to.equal(element.icon);
-        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
+      test('does contain an iron-icon element inside a span element', function() {
+        expect(element.$$('span iron-icon')).to.exist;
+        expect(element.$$('span iron-icon').icon).to.equal(element.icon);
+        expect(element.$$('span iron-icon').getAttribute('item-icon')).to.exist;
+        expect(element.$$('span iron-icon').className.includes(element.iconStyleClass)).to.be.true;
       });
 
-      test('does contain a strong element', function() {
-        expect(element.$$('strong')).to.exist;
-        expect(element.$$('strong').innerText).to.equal(element.text);
+      test('does contain a span element inside a span element', function() {
+        expect(element.$$('span span')).to.exist;
+        expect(element.$$('span span').innerText).to.equal(element.text);
       });
     });
 
@@ -96,8 +96,9 @@ limitations under the License.
         expect(element.text).to.equal('myText');
       });
 
-      test('does not contain a span element', function() {
-        expect(element.$$('span')).to.not.exist;
+      test('does not contain an iron-icon or span element inside a span element', function() {
+        expect(element.$$('span iron-icon')).to.not.exist;
+        expect(element.$$('span span')).to.not.exist;
       });
 
       test('does contain an anchor element', function() {
@@ -106,16 +107,16 @@ limitations under the License.
         expect(element.$$('a').getAttribute('target')).to.equal(element.target);
       });
 
-      test('does contain an iron-icon element', function() {
-        expect(element.$$('iron-icon')).to.exist;
-        expect(element.$$('iron-icon').icon).to.equal(element.icon);
-        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
+      test('does contain an iron-icon element inside the anchor element', function() {
+        expect(element.$$('a iron-icon')).to.exist;
+        expect(element.$$('a iron-icon').icon).to.equal(element.icon);
+        expect(element.$$('a iron-icon').getAttribute('item-icon')).to.exist;
+        expect(element.$$('a iron-icon').className.includes(element.iconStyleClass)).to.be.true;
       });
 
-      test('does contain a strong element', function() {
-        expect(element.$$('strong')).to.exist;
-        expect(element.$$('strong').innerText).to.equal(element.text);
+      test('does contain a span element inside the anchor element', function() {
+        expect(element.$$('a span')).to.exist;
+        expect(element.$$('a span').innerText).to.equal(element.text);
       });
     });
   </script>
