@@ -54,14 +54,19 @@ Custom property                      | Description                              
     <style>
       :host {
         display: block;
+        @apply --layout-horizontal;
+        @apply --layout-center;
       }
 
       a {
         color: inherit;
-        text-decoration: none;
       }
 
-      a > span, span > span {
+      a:hover {
+        @apply --icon-label-link-hover;
+      }
+
+      .text {
         background-color: var(--icon-label-text-background-color);
         border-radius: 5px;
         font-weight: 500;
@@ -76,14 +81,6 @@ Custom property                      | Description                              
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         @apply --icon-label-text;
-      }
-
-      a > span {
-        text-decoration: underline;
-      }
-
-      a:hover > span {
-        @apply --icon-label-link-hover;
       }
 
       iron-icon {
@@ -179,18 +176,14 @@ Custom property                      | Description                              
       }
     </style>
 
+    <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+
     <template is="dom-if" if="[[link]]">
-      <a class="layout horizontal center" href$="[[link]]" target$="[[target]]">
-        <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-        <span>[[text]]</span>
-      </a>
+      <a class="text" href$="[[link]]" target$="[[target]]">[[text]]</a>
     </template>
 
     <template is="dom-if" if="[[!link]]">
-      <span class="layout horizontal center" title="[[text]]">
-        <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
-        <span>[[text]]</span>
-      </span>
+      <span class="text">[[text]]</span>
     </template>
   </template>
 
