@@ -38,9 +38,7 @@ limitations under the License.
         element = fixture('icon-label-fixture');
         element.icon = 'icons:polymer';
         element.text = 'myText';
-        flush(function() {
-          done();
-        });
+        flush(done);
       });
 
       test('properties are set to correct values', function() {
@@ -49,6 +47,7 @@ limitations under the License.
         expect(element.link).to.equal('');
         expect(element.target).to.equal('_self');
         expect(element.text).to.equal('myText');
+        expect(element.width).to.equal(0);
       });
 
       test('does not contain an anchor element', function() {
@@ -58,6 +57,7 @@ limitations under the License.
       test('does contain a span element', function() {
         expect(element.$$('span')).to.exist;
         expect(element.$$('span').innerText).to.equal(element.text);
+        expect(element.$$('span').style.width).to.equal('');
       });
 
       test('does contain an iron-icon element', function() {
@@ -78,9 +78,8 @@ limitations under the License.
         element.link = 'myLink';
         element.target = '_blank';
         element.text = 'myText';
-        flush(function() {
-          done();
-        });
+        element.width = 100;
+        flush(done);
       });
 
       test('properties are set to correct values', function() {
@@ -89,6 +88,7 @@ limitations under the License.
         expect(element.link).to.equal('myLink');
         expect(element.target).to.equal('_blank');
         expect(element.text).to.equal('myText');
+        expect(element.width).to.equal(100);
       });
 
       test('does not contain a span element', function() {
@@ -100,6 +100,7 @@ limitations under the License.
         expect(element.$$('a').getAttribute('href')).to.equal(element.link);
         expect(element.$$('a').getAttribute('target')).to.equal(element.target);
         expect(element.$$('a').innerText).to.equal(element.text);
+        expect(element.$$('a').style.width).to.equal('100px');
       });
 
       test('does contain an iron-icon element', function() {

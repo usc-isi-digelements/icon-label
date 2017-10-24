@@ -68,7 +68,7 @@ Custom property                      | Description                              
 
       .text {
         background-color: var(--icon-label-text-background-color);
-        border-radius: 5px;
+        border-radius: 2px;
         font-weight: 500;
         line-height: 20px;
         padding: 0 5px;
@@ -179,11 +179,11 @@ Custom property                      | Description                              
     <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
 
     <template is="dom-if" if="[[link]]">
-      <a class="text" href$="[[link]]" target$="[[target]]">[[text]]</a>
+      <a class="text" href$="[[link]]" style$="[[_getStyle(width)]]" target$="[[target]]">[[text]]</a>
     </template>
 
     <template is="dom-if" if="[[!link]]">
-      <span class="text">[[text]]</span>
+      <span class="text" style$="[[_getStyle(width)]]">[[text]]</span>
     </template>
   </template>
 
@@ -258,7 +258,31 @@ Custom property                      | Description                              
         text: {
           type: String,
           value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * The width of the text label (0 = no width).
+         *
+         * @type {Number}
+         * @default 0
+         */
+        width: {
+          type: Number,
+          value: 0
         }
+      },
+
+      /**
+       * Returns the style of the text label.
+       *
+       * @param {Number} width
+       * @return {String}
+       * @private
+       */
+      _getStyle: function(width) {
+        return width ? 'width: ' + width + 'px;' : '';
       }
     });
   })();
