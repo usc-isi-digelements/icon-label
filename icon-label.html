@@ -71,7 +71,6 @@ Custom property                      | Description                              
         border-radius: 2px;
         font-weight: 500;
         line-height: 20px;
-        padding: 0 5px;
         /* Needed to fix flexbox layout issues in newer browsers. */
         display: -webkit-box;
         overflow: hidden;
@@ -177,6 +176,8 @@ Custom property                      | Description                              
     </style>
 
     <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+
+    <slot></slot>
 
     <template is="dom-if" if="[[link]]">
       <a class="text" href$="[[link]]" style$="[[_getStyle(width)]]" target$="[[target]]">[[text]]</a>
