@@ -38,14 +38,18 @@ limitations under the License.
         element = fixture('icon-label-fixture');
         element.icon = 'icons:polymer';
         element.text = 'myText';
+        element.textTitleTooltip = 'myTextTitleTooltip';
         flush(done);
       });
 
       test('properties are set to correct values', function() {
         expect(element.icon).to.equal('icons:polymer');
         expect(element.iconStyleClass).to.equal('');
+        expect(element.iconTitleTooltip).to.equal('');
         expect(element.link).to.equal('');
+        expect(element.tappable).to.be.false;
         expect(element.target).to.equal('_self');
+        expect(element.textTitleTooltip).to.equal('myTextTitleTooltip');
         expect(element.text).to.equal('myText');
         expect(element.width).to.equal(0);
       });
@@ -58,6 +62,7 @@ limitations under the License.
         expect(element.$$('span')).to.exist;
         expect(element.$$('span').innerText).to.equal(element.text);
         expect(element.$$('span').style.width).to.equal('');
+        expect(element.$$('span').title).to.equal('myTextTitleTooltip');
       });
 
       test('does contain an iron-icon element', function() {
@@ -65,6 +70,7 @@ limitations under the License.
         expect(element.$$('iron-icon').icon).to.equal(element.icon);
         expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
         expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
+        expect(element.$$('iron-icon').className.includes('tappable')).to.be.false;
       });
     });
 
@@ -75,9 +81,12 @@ limitations under the License.
         element = fixture('icon-label-fixture');
         element.icon = 'icons:polymer';
         element.iconStyleClass = 'myStyleClass';
+        element.iconTitleTooltip = 'myIconTitleTooltip';
         element.link = 'myLink';
+        element.tappable = true;
         element.target = '_blank';
         element.text = 'myText';
+        element.textTitleTooltip = 'myTextTitleTooltip';
         element.width = 100;
         flush(done);
       });
@@ -85,9 +94,12 @@ limitations under the License.
       test('properties are set to correct values', function() {
         expect(element.icon).to.equal('icons:polymer');
         expect(element.iconStyleClass).to.equal('myStyleClass');
+        expect(element.iconTitleTooltip).to.equal('myIconTitleTooltip');
         expect(element.link).to.equal('myLink');
+        expect(element.tappable).to.be.true;
         expect(element.target).to.equal('_blank');
         expect(element.text).to.equal('myText');
+        expect(element.textTitleTooltip).to.equal('myTextTitleTooltip');
         expect(element.width).to.equal(100);
       });
 
@@ -101,13 +113,38 @@ limitations under the License.
         expect(element.$$('a').getAttribute('target')).to.equal(element.target);
         expect(element.$$('a').innerText).to.equal(element.text);
         expect(element.$$('a').style.width).to.equal('100px');
+        expect(element.$$('a').title).to.equal('myTextTitleTooltip');
       });
 
       test('does contain an iron-icon element', function() {
         expect(element.$$('iron-icon')).to.exist;
         expect(element.$$('iron-icon').icon).to.equal(element.icon);
         expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
+        expect(element.$$('iron-icon').title).to.equal('myIconTitleTooltip');
         expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
+        expect(element.$$('iron-icon').className.includes('tappable')).to.be.true;
+      });
+
+      test('_toggleTapped does work as expected', function(done) {
+        var call = 0;
+        var stop = false;
+        element.changeListener = function() {
+          expect(stop).to.be.true;
+          if(++call === 1) {
+            expect(element.tapped).to.be.true;
+          } else {
+            expect(element.tapped).to.be.false;
+            done();
+          }
+        };
+
+        element.listen(element, 'tapped-changed', 'changeListener');
+
+        element._toggleTapped({
+          stopPropagation: function() {
+            stop = true;
+          }
+        });
       });
     });
   </script>

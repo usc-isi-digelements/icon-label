@@ -66,6 +66,10 @@ Custom property                      | Description                              
         @apply --icon-label-link-hover;
       }
 
+      .tappable {
+        cursor: pointer;
+      }
+
       .text {
         background-color: var(--icon-label-text-background-color);
         border-radius: 2px;
@@ -178,16 +182,22 @@ Custom property                      | Description                              
       }
     </style>
 
-    <iron-icon class$="[[iconStyleClass]]" icon$="[[icon]]" item-icon></iron-icon>
+    <iron-icon
+      class$="[[_getStyleClass(iconStyleClass, tappable)]]"
+      icon$="[[icon]]"
+      item-icon
+      title$="[[iconTitleTooltip]]"
+      on-tap="_toggleTapped">
+    </iron-icon>
 
     <slot></slot>
 
     <template is="dom-if" if="[[link]]">
-      <a class="text" href$="[[link]]" style$="[[_getStyle(width)]]" target$="[[target]]">[[text]]</a>
+      <a class="text" href$="[[link]]" style$="[[_getStyle(width)]]" target$="[[target]]" title$="[[textTitleTooltip]]">[[text]]</a>
     </template>
 
     <template is="dom-if" if="[[!link]]">
-      <span class="text" style$="[[_getStyle(width)]]">[[text]]</span>
+      <span class="text" style$="[[_getStyle(width)]]" title$="[[textTitleTooltip]]">[[text]]</span>
     </template>
   </template>
 
@@ -208,6 +218,19 @@ Custom property                      | Description                              
          * @default ''
          */
         icon: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
+         * The tooltip title for the icon.
+         *
+         * @type {String}
+         * @default ''
+         */
+        iconTitleTooltip: {
           type: String,
           value: ''
         },
@@ -241,6 +264,33 @@ Custom property                      | Description                              
         /**
          * (Optional)
          *
+         * Whether the icon is tappable.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        tappable: {
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Output)
+         *
+         * Whether the icon was tapped.  Tapping the icon sets tapped to true and then to false, firing two "changed" observable events.
+         *
+         * @type {Boolean}
+         * @default false
+         */
+        tapped: {
+          notify: true,
+          type: Boolean,
+          value: false
+        },
+
+        /**
+         * (Optional)
+         *
          * The target page of the link.
          *
          * @type {String}
@@ -267,6 +317,19 @@ Custom property                      | Description                              
         /**
          * (Optional)
          *
+         * The tooltip title for the text.
+         *
+         * @type {String}
+         * @default ''
+         */
+        textTitleTooltip: {
+          type: String,
+          value: ''
+        },
+
+        /**
+         * (Optional)
+         *
          * The width of the text label (0 = no width).
          *
          * @type {Number}
@@ -279,7 +342,7 @@ Custom property                      | Description                              
       },
 
       /**
-       * Returns the style of the text label.
+       * Returns the style of the text.
        *
        * @param {Number} width
        * @return {String}
@@ -287,6 +350,29 @@ Custom property                      | Description                              
        */
       _getStyle: function(width) {
         return width ? 'width: ' + width + 'px;' : '';
+      },
+
+      /**
+       * Returns the style class of the icon.
+       *
+       * @param {String} iconStyleClass
+       * @param {Boolean} tappable
+       * @return {String}
+       * @private
+       */
+      _getStyleClass: function(iconStyleClass, tappable) {
+        return iconStyleClass + (tappable ? ' tappable' : '');
+      },
+
+      /**
+       * Sets `tapped` to true and then to false, firing two "changed" observable events.
+       */
+      _toggleTapped: function(event) {
+        if(event) {
+          event.stopPropagation();
+        }
+        this.set('tapped', true);
+        this.set('tapped', false);
       }
     });
   })();
