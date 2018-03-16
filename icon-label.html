@@ -83,9 +83,8 @@ Custom property                      | Description                              
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: normal;
-        /* Use break-all for Firefox and override with break-word for Chrome and Safari. */
+        /* Always use break-all. */
         word-break: break-all;
-        word-break: break-word;
         -webkit-line-clamp: 1;
         -webkit-box-orient: vertical;
         @apply --icon-label-text;
@@ -184,13 +183,15 @@ Custom property                      | Description                              
       }
     </style>
 
-    <iron-icon
-      class$="[[_getStyleClass(iconStyleClass, tappable)]]"
-      icon$="[[icon]]"
-      item-icon
-      title$="[[iconTitleTooltip]]"
-      on-tap="_toggleTapped">
-    </iron-icon>
+    <template is="dom-if" if="[[icon]]">
+      <iron-icon
+        class$="[[_getStyleClass(iconStyleClass, tappable)]]"
+        icon$="[[icon]]"
+        item-icon
+        title$="[[iconTitleTooltip]]"
+        on-tap="_toggleTapped">
+      </iron-icon>
+    </template>
 
     <slot></slot>
 
@@ -212,7 +213,7 @@ Custom property                      | Description                              
 
       properties: {
         /**
-         * (Required)
+         * (Optional)
          *
          * The icon for the icon-label.
          *
