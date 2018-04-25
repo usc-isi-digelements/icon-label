@@ -60,17 +60,17 @@ limitations under the License.
 
       test('does contain a span element', function() {
         expect(element.$$('span')).to.exist;
-        expect(element.$$('span').innerText).to.equal(element.text);
+        expect(element.$$('span').innerText).to.equal('myText');
         expect(element.$$('span').style.width).to.equal('');
         expect(element.$$('span').title).to.equal('myTextTitleTooltip');
       });
 
-      test('does contain an iron-icon element', function() {
-        expect(element.$$('iron-icon')).to.exist;
-        expect(element.$$('iron-icon').icon).to.equal(element.icon);
-        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
-        expect(element.$$('iron-icon').className.includes('tappable')).to.be.false;
+      test('does contain an stylized-icon element', function() {
+        expect(element.$$('stylized-icon')).to.exist;
+        expect(element.$$('stylized-icon').icon).to.equal('icons:polymer');
+        expect(element.$$('stylized-icon').styleClass).to.equal('');
+        expect(element.$$('stylized-icon').titleTooltip).to.equal('');
+        expect(element.$$('stylized-icon').className.includes('tappable')).to.be.false;
       });
     });
 
@@ -109,20 +109,19 @@ limitations under the License.
 
       test('does contain an anchor element', function() {
         expect(element.$$('a')).to.exist;
-        expect(element.$$('a').getAttribute('href')).to.equal(element.link);
-        expect(element.$$('a').getAttribute('target')).to.equal(element.target);
-        expect(element.$$('a').innerText).to.equal(element.text);
+        expect(element.$$('a').getAttribute('href')).to.equal('myLink');
+        expect(element.$$('a').getAttribute('target')).to.equal('_blank');
+        expect(element.$$('a').innerText).to.equal('myText');
         expect(element.$$('a').style.width).to.equal('100px');
         expect(element.$$('a').title).to.equal('myTextTitleTooltip');
       });
 
-      test('does contain an iron-icon element', function() {
-        expect(element.$$('iron-icon')).to.exist;
-        expect(element.$$('iron-icon').icon).to.equal(element.icon);
-        expect(element.$$('iron-icon').getAttribute('item-icon')).to.exist;
-        expect(element.$$('iron-icon').title).to.equal('myIconTitleTooltip');
-        expect(element.$$('iron-icon').className.includes(element.iconStyleClass)).to.be.true;
-        expect(element.$$('iron-icon').className.includes('tappable')).to.be.true;
+      test('does contain an stylized-icon element', function() {
+        expect(element.$$('stylized-icon')).to.exist;
+        expect(element.$$('stylized-icon').icon).to.equal('icons:polymer');
+        expect(element.$$('stylized-icon').styleClass).to.equal('myStyleClass');
+        expect(element.$$('stylized-icon').titleTooltip).to.equal('myIconTitleTooltip');
+        expect(element.$$('stylized-icon').className.includes('tappable')).to.be.true;
       });
 
       test('_toggleTapped does work as expected', function(done) {
