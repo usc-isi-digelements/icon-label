@@ -117,177 +117,177 @@ Custom property                      | Description                              
 
   <script>
   (function() {
-    'use strict';
+  'use strict';
 
-    Polymer({
-      is: 'icon-label',
+  Polymer({
+    is: 'icon-label',
 
-      properties: {
-        /**
-         * (Optional)
-         *
-         * The icon for the icon-label.
-         *
-         * @type {String}
-         * @default ''
-         */
-        icon: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * The tooltip title for the icon.
-         *
-         * @type {String}
-         * @default ''
-         */
-        iconTitleTooltip: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * The style class for the icon in the icon-label.
-         *
-         * @type {String}
-         * @default ''
-         */
-        iconStyleClass: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * The link for the icon-label.
-         *
-         * @type {String}
-         * @default ''
-         */
-        link: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * Whether the icon is tappable.
-         *
-         * @type {Boolean}
-         * @default false
-         */
-        tappable: {
-          type: Boolean,
-          value: false
-        },
-
-        /**
-         * (Output)
-         *
-         * Whether the icon was tapped.  Tapping the icon sets tapped to true and then to false, firing two "changed" observable events.
-         *
-         * @type {Boolean}
-         * @default false
-         */
-        tapped: {
-          notify: true,
-          type: Boolean,
-          value: false
-        },
-
-        /**
-         * (Optional)
-         *
-         * The target page of the link.
-         *
-         * @type {String}
-         * @default '_self'
-         */
-        target: {
-          type: String,
-          value: '_self'
-        },
-
-        /**
-         * (Required)
-         *
-         * The text for the icon-label.
-         *
-         * @type {String}
-         * @default ''
-         */
-        text: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * The tooltip title for the text.
-         *
-         * @type {String}
-         * @default ''
-         */
-        textTitleTooltip: {
-          type: String,
-          value: ''
-        },
-
-        /**
-         * (Optional)
-         *
-         * The width of the text label (0 = no width).
-         *
-         * @type {Number}
-         * @default 0
-         */
-        width: {
-          type: Number,
-          value: 0
-        }
-      },
-
+    properties: {
       /**
-       * Returns the style of the text.
+       * (Optional)
        *
-       * @param {Number} width
-       * @return {String}
-       * @private
-       */
-      _getStyle: function(width) {
-        return width ? 'width: ' + width + 'px;' : '';
-      },
-
-      /**
-       * Returns the style class of the icon.
+       * The icon for the icon-label.
        *
-       * @param {Boolean} tappable
-       * @return {String}
-       * @private
+       * @type {String}
+       * @default ''
        */
-      _getStyleClass: function(tappable) {
-        return (tappable ? ' tappable' : '');
+      icon: {
+        type: String,
+        value: 'tag'
       },
 
       /**
-       * Sets `tapped` to true and then to false, firing two "changed" observable events.
+       * (Optional)
+       *
+       * The tooltip title for the icon.
+       *
+       * @type {String}
+       * @default ''
        */
-      _toggleTapped: function(event) {
-        if(event) {
-          event.stopPropagation();
-        }
-        this.set('tapped', true);
-        this.set('tapped', false);
+      iconTitleTooltip: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * (Optional)
+       *
+       * The style class for the icon in the icon-label.
+       *
+       * @type {String}
+       * @default ''
+       */
+      iconStyleClass: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * (Optional)
+       *
+       * The link for the icon-label.
+       *
+       * @type {String}
+       * @default ''
+       */
+      link: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * (Optional)
+       *
+       * Whether the icon is tappable.
+       *
+       * @type {Boolean}
+       * @default false
+       */
+      tappable: {
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * (Output)
+       *
+       * Whether the icon was tapped.  Tapping the icon sets tapped to true and then to false, firing two "changed" observable events.
+       *
+       * @type {Boolean}
+       * @default false
+       */
+      tapped: {
+        notify: true,
+        type: Boolean,
+        value: false
+      },
+
+      /**
+       * (Optional)
+       *
+       * The target page of the link.
+       *
+       * @type {String}
+       * @default '_self'
+       */
+      target: {
+        type: String,
+        value: '_self'
+      },
+
+      /**
+       * (Required)
+       *
+       * The text for the icon-label.
+       *
+       * @type {String}
+       * @default ''
+       */
+      text: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * (Optional)
+       *
+       * The tooltip title for the text.
+       *
+       * @type {String}
+       * @default ''
+       */
+      textTitleTooltip: {
+        type: String,
+        value: ''
+      },
+
+      /**
+       * (Optional)
+       *
+       * The width of the text label (0 = no width).
+       *
+       * @type {Number}
+       * @default 0
+       */
+      width: {
+        type: Number,
+        value: 0
       }
-    });
-  })();
-  </script>
+    },
+
+    /**
+     * Returns the style of the text.
+     *
+     * @param {Number} width
+     * @return {String}
+     * @private
+     */
+    _getStyle: function(width) {
+      return width ? 'width: ' + width + 'px;' : '';
+    },
+
+    /**
+     * Returns the style class of the icon.
+     *
+     * @param {Boolean} tappable
+     * @return {String}
+     * @private
+     */
+    _getStyleClass: function(tappable) {
+      return tappable ? ' tappable' : '';
+    },
+
+    /**
+     * Sets `tapped` to true and then to false, firing two "changed" observable events.
+     */
+    _toggleTapped: function(event) {
+      if (event) {
+        event.stopPropagation();
+      }
+      this.set('tapped', true);
+      this.set('tapped', false);
+    }
+  });
+})();
+</script>
 </dom-module>

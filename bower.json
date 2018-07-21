@@ -7,7 +7,7 @@
   "license": "Apache-2.0",
   "keywords": ["web-component", "polymer"],
   "main": "icon-label.html",
-  "homepage": "https://github.com/DigElements/icon-label/",
+  "homepage": "https://github.com/usc-isi-digelements/icon-label/",
   "ignore": ["/.*", "/test/"],
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
