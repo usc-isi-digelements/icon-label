@@ -12,8 +12,7 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.2",
     "iron-flex-layout": "PolymerElements/iron-flex-layout#^2.0.0",
-    "stylized-icon":
-      "https://github.com/KimQ0126/stylized-icon.git#243bc49ddd26539769b0d687b7ac32f0f090a162"
+    "stylized-icon": "usc-isi-digelements/stylized-icon#^2.0.1"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^2.0.0",
