@@ -97,7 +97,7 @@ Custom property                      | Description                              
     <template is="dom-if" if="[[icon]]">
       <stylized-icon
         class$="[[_getStyleClass(tappable)]]"
-        icon="[[icon]]"
+        icon="[[_getIcon(icon)]]"
         style-class="[[iconStyleClass]]"
         title-tooltip="[[iconTitleTooltip]]"
         on-tap="_toggleTapped">
@@ -264,6 +264,17 @@ Custom property                      | Description                              
      */
     _getStyle: function(width) {
       return width ? 'width: ' + width + 'px;' : '';
+    },
+
+    /**
+     * Returns a exact icon or a default icon.
+     *
+     * @param {String} icon
+     * @return {String}
+     * @private
+     */
+    _getIcon: function(icon) {
+      return icon === 'icons:default' ? 'bookmark' : icon;
     },
 
     /**
